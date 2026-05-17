@@ -17,7 +17,7 @@ def load_csv(uploaded_file):
         return None, {"error": f"Could not read CSV: {str(e)}"}
 
 
-def detect_message_column(df) -> dict:
+def detect_message_column(df, api_key: str = None) -> dict:
     try:
         sample = {}
         for col in df.columns:
@@ -46,7 +46,9 @@ Return only this JSON, no extra text:
   "reason": "one sentence explaining your choice"
 }}
 """
-        client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+        if not api_key:
+            api_key = os.getenv("GEMINI_API_KEY", "")
+        client = genai.Client(api_key=api_key)
         response = client.models.generate_content(
             model="gemini-2.5-flash",
             contents=prompt

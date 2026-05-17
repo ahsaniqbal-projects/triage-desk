@@ -1,8 +1,12 @@
 import streamlit as st
+import os
 import pandas as pd
 import plotly.express as px
+from dotenv import load_dotenv
 from classifier import classify_ticket
 from utils import load_csv, detect_message_column, extract_tickets, group_by_category, get_summary_stats
+
+load_dotenv()
 
 
 def apply_custom_styles():
@@ -52,6 +56,23 @@ def apply_custom_styles():
         background: rgba(79,156,249,0.08) !important;
         color: #ffffff !important;
         border: none !important;
+    }
+
+    /* API key input in sidebar */
+    [data-testid="stSidebar"] input[type="password"],
+    [data-testid="stSidebar"] input[type="text"] {
+        background: #161616 !important;
+        border: 1px solid #252525 !important;
+        border-radius: 10px !important;
+        color: #f0f0f0 !important;
+        font-size: 12px !important;
+    }
+    [data-testid="stSidebar"] label {
+        color: #505050 !important;
+        font-size: 11px !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1.5px !important;
     }
 
     /* ── TYPOGRAPHY ── */
@@ -224,34 +245,99 @@ if "page" not in st.session_state:
     st.session_state.page = "Classify tickets"
 if "last_file" not in st.session_state:
     st.session_state.last_file = None
+if "api_key" not in st.session_state:
+    st.session_state.api_key = ""
 
 # ── SIDEBAR ──
 with st.sidebar:
     st.markdown("""
+        <div style='
+            padding: 20px 8px 20px 8px;
+            border-bottom: 1px solid #1e1e1e;
+            margin-bottom: 16px;
+        '>
             <div style='
-                padding: 20px 8px 20px 8px;
-                border-bottom: 1px solid #1e1e1e;
-                margin-bottom: 16px;
-            '>
-                <div style='
-                    font-size: 26px;
-                    font-weight: 700;
-                    color: #f0f0f0;
-                    letter-spacing: -1px;
-                    line-height: 1.1;
-                '>Triage Desk</div>
-                <div style='
-                    font-size: 12px;
-                    color: #505050;
-                    margin-top: 5px;
-                '>AI ticket classifier</div>
-            </div>
-        """, unsafe_allow_html=True)
+                font-size: 26px;
+                font-weight: 700;
+                color: #f0f0f0;
+                letter-spacing: -1px;
+                line-height: 1.1;
+            '>Triage Desk</div>
+            <div style='
+                font-size: 12px;
+                color: #505050;
+                margin-top: 5px;
+            '>AI ticket classifier</div>
+        </div>
+    """, unsafe_allow_html=True)
 
     for label in ["Classify tickets", "Bulk groups", "Insights"]:
         if st.button(label, key=f"nav_{label}", use_container_width=True):
             st.session_state.page = label
             st.rerun()
+
+    st.markdown("""
+        <div style='
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #1e1e1e;
+        '></div>
+    """, unsafe_allow_html=True)
+
+    api_key_input = st.text_input(
+        "API Key",
+        type="password",
+        placeholder="Paste your Gemini API key",
+        value=st.session_state.api_key,
+        help="Get a free key at aistudio.google.com — no credit card needed."
+    )
+
+    if api_key_input:
+        st.session_state.api_key = api_key_input
+        st.markdown("""
+            <div style='font-size: 11px; color: #3B7D4E; margin-top: 4px;'>
+                ✓ Key loaded
+            </div>
+        """, unsafe_allow_html=True)
+    else:
+        st.markdown("""
+            <div style='font-size: 11px; color: #505050; margin-top: 6px; line-height: 1.6;'>
+                Get a free key at
+                <a href="https://aistudio.google.com" target="_blank"
+                   style="color: #4f9cf9; text-decoration: none;">aistudio.google.com</a>
+                <br><br>
+                This tool is built on Gemini's free tier so it can be accessible
+                to users that do not wish to pay for an API key.
+            </div>
+        """, unsafe_allow_html=True)
+
+
+# ── API KEY GUARD ──
+effective_api_key = st.session_state.api_key or os.getenv("GEMINI_API_KEY", "")
+
+if not effective_api_key:
+    st.markdown("""
+        <div style='
+            margin-top: 20vh;
+            text-align: center;
+        '>
+            <div style='font-size: 32px; margin-bottom: 12px;'>🎫</div>
+            <div style='font-size: 20px; font-weight: 700; color: #f0f0f0;
+                        letter-spacing: -0.5px; margin-bottom: 8px;'>
+                Welcome to Triage Desk
+            </div>
+            <div style='font-size: 14px; color: #505050; max-width: 380px;
+                        margin: 0 auto; line-height: 1.6;'>
+                To test this tool, paste your Gemini API key in the sidebar.
+                A free key with no credit card required is available at
+                <a href="https://aistudio.google.com" target="_blank"
+                   style="color: #4f9cf9; text-decoration: none;">
+                   aistudio.google.com
+                </a>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+    st.stop()
 
 
 # ── CLASSIFY PAGE ──
@@ -280,7 +366,7 @@ if st.session_state.page == "Classify tickets":
 
                 if st.session_state.detected_column is None or st.session_state.last_file != file_name:
                     with st.spinner("Analysing your file..."):
-                        detection = detect_message_column(df)
+                        detection = detect_message_column(df, effective_api_key)
                         st.session_state.detected_column = detection
                         st.session_state.last_file = file_name
 
@@ -325,7 +411,7 @@ if st.session_state.page == "Classify tickets":
                         else:
                             time_str = f"{seconds}s remaining"
                         status.caption(f"Classifying ticket {i + 1} of {total_tickets} · {time_str}")
-                        result = classify_ticket(ticket)
+                        result = classify_ticket(ticket, effective_api_key)
                         result["original_text"] = ticket
                         results.append(result)
                         progress.progress((i + 1) / total_tickets)
@@ -342,7 +428,7 @@ if st.session_state.page == "Classify tickets":
         if st.button("Classify this ticket", type="primary"):
             if ticket_input.strip():
                 with st.spinner("Classifying..."):
-                    result = classify_ticket(ticket_input)
+                    result = classify_ticket(ticket_input, effective_api_key)
                     result["original_text"] = ticket_input
                     st.session_state.results = [result]
                     st.rerun()
