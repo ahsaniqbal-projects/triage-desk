@@ -6,10 +6,11 @@ from dotenv import load_dotenv
 from prompts import CLASSIFIER_PROMPT
 
 load_dotenv()
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
-
-def classify_ticket(ticket_text: str) -> dict:
+def classify_ticket(ticket_text: str, api_key: str = None) -> dict:
+    if not api_key:
+        api_key = os.getenv("GEMINI_API_KEY", "")
+    client = genai.Client(api_key=api_key)
     if not ticket_text or not ticket_text.strip():
         return {"error": "No ticket text provided."}
 
