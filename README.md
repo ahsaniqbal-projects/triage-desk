@@ -10,7 +10,7 @@
 
 Triage Desk is a lightweight AI tool that classifies customer support tickets automatically, categorising them, assigning priority, detecting customer sentiment, and suggesting the next action. It supports both single ticket analysis and bulk CSV uploads, and groups similar tickets together to make review and analysis easier.
 
-It was built as a demonstration of practical AI Ops thinking: identifying a real operational bottleneck in customer support workflows and building a focused, usable solution around it.
+It was built as a portfolio project to develop practical experience with LLM API integration, prompt engineering and public deployment. As I have a background in customer support and operations, I utilised my own experiences to determine the kind of solution I would want in a real support at scale and recruiting operations environment.
 
 ---
 
@@ -23,7 +23,7 @@ Support teams working at scale face a consistent set of friction points that slo
 - Duplicate issues — multiple customers asking the same question — get handled individually rather than in bulk, wasting time
 - Sentiment and urgency signals buried in ticket text go unnoticed until a customer escalates
 
-Triage Desk addresses all four of these without requiring any changes to existing tooling. It works with a CSV export from any support platform — Zendesk, Intercom, Freshdesk, or a simple spreadsheet.
+Triage Desk aims to address all four of these without requiring any changes to existing tooling. It works with a CSV export from any support platform — Zendesk, Intercom, Freshdesk, or a simple spreadsheet.
 
 ---
 
@@ -111,8 +111,8 @@ This version demonstrates the core concept. With more time, the next meaningful 
 
 ## About
 
-Built by **Ahsan Iqbal** — operations professional with 10 years at Apple across AppleCare, Business Partner Relations, and Recruitment Operations. I build AI-assisted tools to solve operational problems that slow people down.
+Built by **Ahsan Iqbal**. I'm an operations professional with 10 years at Apple across AppleCare, Business Partner Relations, and Recruitment Operations. I build AI-assisted tools to solve operational problems that slow people down.
 
-This project was built as a portfolio demonstration of AI Ops thinking — identifying automation opportunities in customer support workflows and building a lightweight, practical solution around them.
+This project was built as a portfolio demonstration of AI Ops thinking and a showcase of my own learning as I develop and continue to build.
 
-→ [Portfolio](https://ahsaniqbal.com) · [GitHub](https://github.com/ahsaniqbal-projects)
+→ [Portfolio](https://ahsan-iqbal.netlify.app/) · [GitHub](https://github.com/ahsaniqbal-projects)
