@@ -2,7 +2,7 @@
 
 **AI-powered support ticket classifier built with Python, Streamlit, and the Gemini API**
 
-🔗 [Live Demo](https://triage-desk.streamlit.app) · [GitHub](https://github.com/ahsaniqbal-projects/triage-desk)
+🔗 [Live Demo](https://triage-desk.streamlit.app) . [Portfolio](https://ahsan-iqbal.netlify.app/) 
 
 ---
 
@@ -115,4 +115,4 @@ Built by **Ahsan Iqbal**. I'm an operations professional with 10 years at Apple 
 
 This project was built as a portfolio demonstration of AI Ops thinking and a showcase of my own learning as I develop and continue to build.
 
-→ [Portfolio](https://ahsan-iqbal.netlify.app/) · [GitHub](https://github.com/ahsaniqbal-projects)
+→ [Portfolio](https://ahsan-iqbal.netlify.app/) 
