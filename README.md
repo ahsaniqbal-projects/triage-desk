@@ -2,7 +2,7 @@
 
 **AI-powered support ticket classifier built with Python, Streamlit, and the Gemini API**
 
-🔗 [Live Demo](https://triage-desk.streamlit.app) . [Portfolio](https://ahsan-iqbal.netlify.app/) 
+🔗 [Live Demo](https://triage-desk.streamlit.app) | [Portfolio](https://ahsan-iqbal.netlify.app/) 
 
 ---
 
