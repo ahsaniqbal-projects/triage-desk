@@ -42,13 +42,16 @@ Triage Desk aims to address all four of these without requiring any changes to e
 
 <img width="3834" height="1878" alt="TD SS 2" src="https://github.com/user-attachments/assets/33270288-9fa4-46ba-87fb-e00c55e671ae" />
 
+
 **Duplicate grouping** — classified tickets are grouped by category in the Bulk Groups view, making it easy to identify clusters of similar issues and draft a single response that applies to all of them.
 
 <img width="3840" height="1873" alt="TD SS 3" src="https://github.com/user-attachments/assets/a6fcf99a-b4cb-498a-b403-18f6c9ddbf28" />
 
+
 **Insights** — a visual summary of your ticket batch by category, priority, and sentiment, giving support managers an immediate overview of what's coming in.
 
 <img width="3840" height="2154" alt="TD SS 4" src="https://github.com/user-attachments/assets/5b1a6224-ad9a-4612-8a12-f49ac9e33a7a" />
+
 
 **Export** — results can be downloaded as a CSV, ready to feed back into your ticketing system or share with your team.
 
