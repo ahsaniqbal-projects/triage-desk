@@ -2,7 +2,7 @@
 
 **AI-powered support ticket classifier built with Python, Streamlit, and the Gemini API**
 
-🔗 [Live Demo](https://triage-desk.streamlit.app) | [Portfolio](https://ahsan-iqbal.netlify.app/) 
+🔗 [Live Demo](https://triage-desk.streamlit.app) | [Portfolio](https://ahsan-iqbal.netlify.app/#triage-desk) 
 
 ---
 
@@ -10,7 +10,7 @@
 
 Triage Desk is a lightweight AI tool that classifies customer support tickets automatically, categorising them, assigning priority, detecting customer sentiment, and suggesting the next action. It supports both single ticket analysis and bulk CSV uploads, and groups similar tickets together to make review and analysis easier.
 
-It was built as a portfolio project to develop practical experience with LLM API integration, prompt engineering and public deployment. As I have a background in customer support and operations, I utilised my own experiences to determine the kind of solution I would want in a real support at scale and recruiting operations environment.
+It was built as a portfolio project to develop practical experience with LLM API integration, prompt engineering and public deployment. I have a background in customer support and operations, so I built this with the idea that it should be something I would find helpful to use in that environment. 
 
 ---
 
@@ -30,7 +30,7 @@ Triage Desk aims to address all four of these without requiring any changes to e
 ## Features
 
 **Smart classification** — each ticket is analysed by Gemini and returned with a structured classification:
-- Category (Billing, Technical Issue, Account Access, Payroll, Onboarding, Feature Request, Complaint, Other)
+- Category (Billing, Technical Issue, Account Access, Feature Request, Complaint, Other)
 - Priority (High, Medium, Low) with a one-line reason
 - Suggested action (Escalate to technical team, Standard response, Follow-up required, etc.)
 - Customer sentiment (Frustrated, Neutral, Positive)
@@ -38,9 +38,14 @@ Triage Desk aims to address all four of these without requiring any changes to e
 
 **Bulk CSV upload** — upload an export from any support tool. Triage Desk uses Gemini to automatically identify which column contains the customer message, removing the need to reformat your data before use. A confirmation step lets you verify or override the detected column before classification runs.
 
+<img width="3838" height="1890" alt="Triage desk SS 1" src="https://github.com/user-attachments/assets/ef49040f-3c30-4b8d-a9c5-25818d1052c6" />
+<img width="3834" height="1878" alt="TD SS 2" src="https://github.com/user-attachments/assets/33270288-9fa4-46ba-87fb-e00c55e671ae" />
+
 **Duplicate grouping** — classified tickets are grouped by category in the Bulk Groups view, making it easy to identify clusters of similar issues and draft a single response that applies to all of them.
+<img width="3840" height="1873" alt="TD SS 3" src="https://github.com/user-attachments/assets/a6fcf99a-b4cb-498a-b403-18f6c9ddbf28" />
 
 **Insights** — a visual summary of your ticket batch by category, priority, and sentiment, giving support managers an immediate overview of what's coming in.
+<img width="3840" height="2154" alt="TD SS 4" src="https://github.com/user-attachments/assets/5b1a6224-ad9a-4612-8a12-f49ac9e33a7a" />
 
 **Export** — results can be downloaded as a CSV, ready to feed back into your ticketing system or share with your team.
 
@@ -101,18 +106,18 @@ triage-desk/
 
 This version demonstrates the core concept. With more time, the next meaningful additions would be:
 
-- **Auto-assignment** — distribute tickets evenly across agents or route them by category to the right team
-- **Response drafting** — generate a suggested reply for each ticket, not just a suggested action
-- **Multi-provider support** — allow users to plug in an OpenAI or Anthropic key instead of Gemini
-- **Webhook integration** — connect directly to Zendesk or Intercom so tickets are classified in real time rather than via CSV export
-- **Custom classification rules** — let support managers define their own priority signals in plain English, which the model applies at classification time
+- **Auto-assignment**: distribute tickets evenly across agents or route them by category to the right team
+- **Response drafting**: generate a suggested reply for each ticket, not just a suggested action
+- **Multi-provider support**: allow users to plug in an OpenAI or Anthropic key instead of Gemini
+- **Webhook integration**: connect directly to Zendesk or Intercom so tickets are classified in real time rather than via CSV export
+- **Custom classification rules**: let support managers define their own priority signals in plain English, which the model applies at classification time
 
 ---
 
 ## About
 
-Built by **Ahsan Iqbal**. I'm an operations professional with 10 years at Apple across AppleCare, Business Partner Relations, and Recruitment Operations. I build AI-assisted tools to solve operational problems that slow people down.
+Built by **Ahsan Iqbal**. I'm an operations professional with 10 years at Apple across AppleCare, Business Partner Relations, and Recruitment Operations.
 
-This project was built as a portfolio demonstration of AI Ops thinking and a showcase of my own learning as I develop and continue to build.
+This project was built as a demonstration of what I've learned so far, and I plan to keep building on it. 
 
 → [Portfolio](https://ahsan-iqbal.netlify.app/) 
