@@ -12,6 +12,9 @@ Triage Desk is a lightweight AI tool that classifies customer support tickets au
 
 It was built as a portfolio project to develop practical experience with LLM API integration, prompt engineering and public deployment. I have a background in customer support and operations, so I built this with the idea that it should be something I would find helpful to use in that environment. 
 
+<img width="3838" height="1890" alt="Triage desk SS 1" src="https://github.com/user-attachments/assets/536d4a1f-fb78-4a6d-b8cf-cfeebe590b2a" />
+
+
 ---
 
 ## The problem it solves
@@ -37,8 +40,6 @@ Triage Desk aims to address all four of these without requiring any changes to e
 - A plain-English summary of the ticket
 
 **Bulk CSV upload** — upload an export from any support tool. Triage Desk uses Gemini to automatically identify which column contains the customer message, removing the need to reformat your data before use. A confirmation step lets you verify or override the detected column before classification runs.
-
-<img width="3838" height="1890" alt="Triage desk SS 1" src="https://github.com/user-attachments/assets/ef49040f-3c30-4b8d-a9c5-25818d1052c6" />
 
 <img width="3834" height="1878" alt="TD SS 2" src="https://github.com/user-attachments/assets/33270288-9fa4-46ba-87fb-e00c55e671ae" />
 
